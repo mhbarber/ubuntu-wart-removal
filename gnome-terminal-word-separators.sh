@@ -15,8 +15,7 @@ Target default non-word-separators:
 You can find the GNOME Terminal profile UUID in Profile Preferences > General.
 
 Known IDs:
-$(dconf list /org/gnome/terminal/legacy/profiles:/ \
-    | grep : | tr -d ':/' | sed 's/^/    /')
+$(dconf list /org/gnome/terminal/legacy/profiles:/ | awk '/:/ {gsub(":|/","");print "   ",$0}')
 
 EOM
     exit 1
